@@ -21,8 +21,11 @@ before_install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
 
+before_install:
+  - pip install codecov
 install:
   - conda install numpy pytest
-
+after_success:
+  - codecov
 script:
   - py.test
