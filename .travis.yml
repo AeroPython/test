@@ -21,10 +21,10 @@ before_install:
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
-  - pip install codecov
+  - pip install codecov 
 install:
   - echo "YES"
+script:
+  - py.test --cov
 after_success:
   - codecov
-script:
-  - py.test
