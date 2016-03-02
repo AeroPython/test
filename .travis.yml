@@ -1,3 +1,6 @@
+sudo: false
+
+
 language: python
 
 python:
@@ -15,14 +18,14 @@ before_install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
-
+  - pip install codecov pytest-cov
 install:
-  - conda install numpy pytest
-
+  - echo "YES"
 script:
-  - py.test
+  - py.test --cov
+after_success:
+  - codecov
