@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import data
 
 def foo(x):
     global a
@@ -8,5 +9,5 @@ def foo2(x):
     plt.plot(x, x, 'o')
 
 def foo_global(x):
-    global a
+    a = data.a
     plt.plot(a, x, 'o')
